@@ -14,7 +14,7 @@ class Web extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        myData : [],
+    myData : [],
 		myData2 : [],
 		myData3 : [],
 		myData4 : [],
@@ -89,32 +89,58 @@ class Web extends React.Component {
             //console.log(myData);
         });
   }
-  
+  render() {    
+    var name1 = getName(this.state.myData);
+    var name2 = getName(this.state.myData2);
+    var name3 = getName(this.state.myData3);
+    var name4 = getName(this.state.myData4);
+    var name5 = getName(this.state.myData5);
 
-  render() {
-    //const personLoc = Object.keys(this.state.myData)
+    var avatar1 = getAvatar(this.state.myData);
+    var avatar2 = getAvatar(this.state.myData2);
+    var avatar3 = getAvatar(this.state.myData3);
+    var avatar4 = getAvatar(this.state.myData4);
+    var avatar5 = getAvatar(this.state.myData5);
 
-	var name = "";
-	
-	//this.state.myData.profile.subscribe((name2) => {
-	//	name = name2.account_id;
-	//});
-	
-    console.log(this.state.myData.profile);
+    console.log(this.state.myData);
+    
     return (
 	
       <div className="game">
         <div className="game-board">
 			<Header />
-            <b>Ako Solo</b>: {this.state.myData.solo_competitive_rank} <br/>
-			<b>Herb Solo</b>: {this.state.myData2.solo_competitive_rank} <br/>
-			<b>Tony Solo</b>: {this.state.myData3.solo_competitive_rank} <br/>
-			<b>Duy Solo</b>: {this.state.myData4.solo_competitive_rank} <br/>
-			<b>Tien Solo</b>: {this.state.myData5.solo_competitive_rank} <br/>
+      <img src = {avatar1}></img> ({name1}) <b>Ako Solo</b>: {this.state.myData.solo_competitive_rank} <br/> 
+      <img src = {avatar2}></img> ({name2}) <b>Herb Solo</b>: {this.state.myData2.solo_competitive_rank} <br/>
+			<img src = {avatar3}></img> ({name3}) <b>Tony Solo</b>: {this.state.myData3.solo_competitive_rank} <br/>
+			<img src = {avatar4}></img> ({name4}) <b>Duy Solo</b>: {this.state.myData4.solo_competitive_rank} <br/>
+			<img src = {avatar5}></img> ({name5}) <b>Tien Solo</b>: {this.state.myData5.solo_competitive_rank} <br/>
+			
         </div>
       </div>
     );
   }
+}
+
+function getName (object){
+  var name;
+
+  for(var key in object){
+    if(object.hasOwnProperty(key)){
+      if(object[key] != null) name = object[key].personaname;
+    }
+  }
+  return name;
+}
+
+function getAvatar (object){
+  var name;
+
+  for(var key in object){
+    if(object.hasOwnProperty(key)){
+      if(object[key] != null) name = object[key].avatarmedium;
+    }
+  }
+  return name;
 }
 
 // ========================================
