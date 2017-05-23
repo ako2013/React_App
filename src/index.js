@@ -2,12 +2,51 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Header extends React.Component{
+class Nav extends React.Component{
 	render(){
 		return(
-			<h2>MMR Tracking </h2>
+    <div className ="container-fluild">
+      <nav className="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+          <a className="navbar-brand topnav">MMR Tracking</a>
+      </nav>
+    </div>
 		);
 	}
+}
+
+class Header extends React.Component{
+
+  render(){
+    return(
+      <div>
+        <a name="about"></a>
+        <div class="intro-header">
+          <div class="container">
+
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="intro-message">
+                          <hr class="intro-divider"/>
+                          <ul class="list-inline intro-social-buttons">
+                              <li>
+                                  <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                              </li>
+                              <li>
+                                  <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                              </li>
+                              <li>
+                                  <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+    </div>
+    );
+  }
 }
 
 class Web extends React.Component {
@@ -106,15 +145,51 @@ class Web extends React.Component {
     
     return (
 	
-      <div className="game">
-        <div className="game-board">
-			<Header />
-      <img src = {avatar1}></img> ({name1}) <b>Ako Solo</b>: {this.state.myData.solo_competitive_rank} <br/> 
-      <img src = {avatar2}></img> ({name2}) <b>Herb Solo</b>: {this.state.myData2.solo_competitive_rank} <br/>
-			<img src = {avatar3}></img> ({name3}) <b>Tony Solo</b>: {this.state.myData3.solo_competitive_rank} <br/>
-			<img src = {avatar4}></img> ({name4}) <b>Duy Solo</b>: {this.state.myData4.solo_competitive_rank} <br/>
-			<img src = {avatar5}></img> ({name5}) <b>Tien Solo</b>: {this.state.myData5.solo_competitive_rank} <br/>
-			
+      <div className ="container-fluild">
+        <Nav />
+        <div className ="content-section-a">
+          <table className="table">
+            <thread>
+              <tr>
+                <th>Avatar</th>
+                <th>Nick</th>
+                <th>Alias</th>
+                <th>Solo MMR</th>
+              </tr>
+            </thread>
+            <tbody>
+              <tr>
+                <td><img src = {avatar1}></img></td>
+                <td>{name1}</td>
+                <td>Ako</td>
+                <td>{this.state.myData.solo_competitive_rank}</td>
+              </tr>
+              <tr>
+                <td><img src = {avatar2}></img></td>
+                <td>{name2}</td>
+                <td>Herb</td>
+                <td>{this.state.myData2.solo_competitive_rank}</td>
+              </tr>
+              <tr>
+                <td><img src = {avatar3}></img></td>
+                <td>{name3}</td>
+                <td>Tony</td>
+                <td>{this.state.myData3.solo_competitive_rank}</td>
+              </tr>
+              <tr>
+                <td><img src = {avatar4}></img></td>
+                <td>{name1}</td>
+                <td>Duy</td>
+                <td>{this.state.myData4.solo_competitive_rank}</td>
+              </tr>
+              <tr>
+                <td><img src = {avatar5}></img></td>
+                <td>{name1}</td>
+                <td>Tien</td>
+                <td>{this.state.myData5.solo_competitive_rank}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );
