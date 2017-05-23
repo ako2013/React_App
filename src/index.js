@@ -27,7 +27,7 @@ class Web extends React.Component {
 	  var url_herb = 'https://api.opendota.com/api/players/267288896';
 	  var url_tony = 'https://api.opendota.com/api/players/111997531';
 	  var url_duy = 'https://api.opendota.com/api/players/379987949';
-	  var url_tien = 'https://api.opendota.com/api/players/357425650';
+	  var url_tien = 'https://api.opendota.com/api/players/135084531';
 
       fetch(url_ako)
         .then((response)=> {
@@ -94,13 +94,23 @@ class Web extends React.Component {
   render() {
     //const personLoc = Object.keys(this.state.myData)
 
-    //console.log(this.state.myData);
+	var name = "";
+	
+	//this.state.myData.profile.subscribe((name2) => {
+	//	name = name2.account_id;
+	//});
+	
+    console.log(this.state.myData.profile);
     return (
 	
       <div className="game">
         <div className="game-board">
 			<Header />
-            <b>Ako Solo</b>: {this.state.myData.solo_competitive_rank}
+            <b>Ako Solo</b>: {this.state.myData.solo_competitive_rank} <br/>
+			<b>Herb Solo</b>: {this.state.myData2.solo_competitive_rank} <br/>
+			<b>Tony Solo</b>: {this.state.myData3.solo_competitive_rank} <br/>
+			<b>Duy Solo</b>: {this.state.myData4.solo_competitive_rank} <br/>
+			<b>Tien Solo</b>: {this.state.myData5.solo_competitive_rank} <br/>
         </div>
       </div>
     );
