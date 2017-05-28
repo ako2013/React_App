@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import NavBar from './nav-bar';
-import Details_ID from './details_id';
 
 
 
@@ -22,7 +21,7 @@ class Details extends React.Component {
     return (
       <div>
         <NavBar/>
-        <h1>Detail page</h1>
+        <h3> In progress </h3>
       </div>
     );
   }

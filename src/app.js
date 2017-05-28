@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+
 import './app.css';
 
 import NavBar from './nav-bar';
@@ -54,7 +56,7 @@ class App extends React.Component {
 
     //{this.state.myData.solo_competitive_rank}
     //<img src = {avatar1}></img>
-    console.log(data);
+    //console.log(data);
 
     const infoList = data.map((info)=>{
       //TO-DO 
@@ -64,7 +66,7 @@ class App extends React.Component {
 
         var feedback = 
           <tr>
-            <td><img src={avatar} alt ="profile pic"></img></td>
+            <td><Link to ='/details'><img src={avatar} alt ="profile pic"></img></Link></td>
             <td>{name}</td>
             <td>{info.solo_competitive_rank}</td>
           </tr>;
@@ -78,15 +80,21 @@ class App extends React.Component {
       <div className ="container-fluild">
         <NavBar />
 
-        <div className ="content-section-a">
           <table className="table">
-            <tbody>
-                {infoList}
-            </tbody>
+            <thead className="thead-inverse">
+              <tr>
+              <th>Avatar</th>
+                <th>Nick</th>
+                <th>Solo MMR</th>
+                <th>Tracking Name</th>
+              </tr>
+            </thead>
+              <tbody>
+                  {infoList}
+              </tbody>
           </table>
         </div>
 
-      </div>
     );
   }
 }

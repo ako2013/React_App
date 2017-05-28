@@ -24,3 +24,7 @@ h6 {
 .table{
   color: slategrey;
 }
+
+.disabled-link {
+  pointer-events: none;
+}
