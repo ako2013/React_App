@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 import './app.css';
 
 import NavBar from './nav-bar';
+import Footer from './footer';
 
 class App extends React.Component {
   constructor(props) {
@@ -72,10 +72,10 @@ class App extends React.Component {
 
         var feedback = 
           <tr>
-            <td><img src={avatar} alt ="profile pic"></img></td>
+            <td className="animated rubberBand"><img src={avatar} className="img-fluid" alt ="profile pic"></img></td>
             <td>{name}</td>
             <td>{info.solo_competitive_rank}</td>
-            <td>{changes}</td>
+            <td align="right">{changes}</td>
           </tr>;
 
         return feedback;
@@ -83,28 +83,28 @@ class App extends React.Component {
     });
     
     return (
-	
       <div className ="container-fluid">
         <NavBar />
         <div className = "row">
-        <div className = "col-md-2"></div>
-        <div className = "col-md-8">
-          <table className="table">
-            <thead className="thead-inverse">
-              <tr>
-              <th>Avatar</th>
-                <th>Nick</th>
-                <th>Solo MMR</th>
-                <th>Changes</th>
-              </tr>
-             </thead>
-               <tbody>
-                    {infoList}
-                </tbody>
-             </table>
-          </div>
           <div className = "col-md-2"></div>
+          <div className = "col-md-8">
+            <table className="table">
+              <thead className="thead-inverse">
+                <tr>
+                <th className="animated lightSpeedIn">Avatar</th>
+                  <th className="animated lightSpeedIn">Nick</th>
+                  <th className="animated lightSpeedIn">Solo MMR</th>
+                  <th className="animated lightSpeedIn">Changes</th>
+                </tr>
+              </thead>
+                <tbody>
+                      {infoList}
+                  </tbody>
+              </table>
+            </div>
+            <div className = "col-md-2"></div>
           </div>
+          <Footer/>
         </div>
           
     );
@@ -148,7 +148,6 @@ function getID (object){
 function getChanges (object){
     var file = require('./mmr.json');
     var name;
-    var temp;
 
     //get the UID
     for(var key in object){
@@ -159,7 +158,7 @@ function getChanges (object){
 
     //iterate through stored JSON file
     for(let item in file) {
-      if(item == name) return object.solo_competitive_rank - file[item];
+      if(item === name) return object.solo_competitive_rank - file[item];
     }
     return 0;
 }

@@ -1,7 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import NavBar from './nav-bar';
+import Footer from './footer';
+
+import './details.css';
 
 
 
@@ -22,10 +24,12 @@ import NavBar from './nav-bar';
         });
 
     return (
-    <div>
-      <NavBar/>
+        <div>
+            <NavBar/>
+            <div className ="animation">Hi sweetie</div>
+            <h1 className="animated infinite bounce">Example</h1>
 
-    </div>
+        </div>
     )
   }
 

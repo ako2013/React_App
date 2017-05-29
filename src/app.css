@@ -25,10 +25,15 @@ h6 {
   color: slategrey;
 }
 
-.disabled-link {
-  pointer-events: none;
-}
-
 .col-md-2{
   background-color: darkgrey;
+}
+
+footer {
+      background-color: black;
+      color: dimgrey;
+      padding: 7px;
+      text-align: center;
+      font-weight: 100;
+      font-family: sans-serif;
 }
