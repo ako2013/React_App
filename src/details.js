@@ -5,27 +5,29 @@ import NavBar from './nav-bar';
 
 
 
-class Details extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      myData: [],
-  };
-  }
+  const Details = (props) => {
 
-  componentWillMount(){
-  }
+    //console.log(props);
 
-  render() {    
-      console.log("Details rendered");
+    var url = 'https://api.opendota.com/api/players/67762065/matches?limit=10';
+    fetch(url)
+        .then((response)=> {
+            if(response.status >= 400){
+                throw new Error  ("Bad response from server");
+            }
+            return response.json();
+        })
+        .then((data) =>{
+            //console.log(data);
+        });
+
     return (
-      <div>
-        <NavBar/>
-        <h3> In progress </h3>
-      </div>
-    );
+    <div>
+      <NavBar/>
+
+    </div>
+    )
   }
-}
 
 
 // ========================================
