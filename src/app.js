@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './app.css';
 
@@ -16,7 +16,7 @@ class App extends React.Component {
 
   componentWillMount(){
     var array = [];
-    let myData2 = new Array();
+    let myData2 = [];
     var url_ako = 'https://api.opendota.com/api/players/67762065';
 	  var url_herb = 'https://api.opendota.com/api/players/267288896';
 	  var url_tony = 'https://api.opendota.com/api/players/111997531';
@@ -59,7 +59,6 @@ class App extends React.Component {
     const infoList = data.map((info)=>{
         var name = getName(info);
         var avatar = getAvatar(info);
-        let id = getID(info);
         var changes = getChanges(info);
 
         var color;
@@ -68,14 +67,14 @@ class App extends React.Component {
         if(changes > 0) color = positive;
         else color = negative; 
 
-        console.log(color);
+        //console.log(color);
 
         var feedback = 
           <tr>
-            <td className="animated rubberBand"><img src={avatar} className="img-fluid" alt ="profile pic"></img></td>
-            <td>{name}</td>
-            <td>{info.solo_competitive_rank}</td>
-            <td align="right">{changes}</td>
+            <td className="animated rotateInDownLeft"><img src={avatar} className="img-fluid" alt ="profile pic"></img></td>
+            <td className="animated bounceInDown">{name}</td>
+            <td className="animated bounceInDown">{info.solo_competitive_rank}</td>
+            <td className="animated rotateInDownRight">{changes}</td>
           </tr>;
 
         return feedback;
@@ -83,7 +82,7 @@ class App extends React.Component {
     });
     
     return (
-      <div className ="container-fluid">
+      <div className>
         <NavBar />
         <div className = "row">
           <div className = "col-md-2"></div>
@@ -91,21 +90,21 @@ class App extends React.Component {
             <table className="table">
               <thead className="thead-inverse">
                 <tr>
-                <th className="animated lightSpeedIn">Avatar</th>
-                  <th className="animated lightSpeedIn">Nick</th>
-                  <th className="animated lightSpeedIn">Solo MMR</th>
-                  <th className="animated lightSpeedIn">Changes</th>
+                <th className="animated rotateInDownLeft">Avatar</th>
+                  <th className="animated slideInDown">Nick</th>
+                  <th className="animated slideInDown">Solo MMR</th>
+                  <th className="animated rotateInDownRight">Changes</th>
                 </tr>
               </thead>
                 <tbody>
                       {infoList}
-                  </tbody>
+                </tbody>
               </table>
-            </div>
-            <div className = "col-md-2"></div>
           </div>
-          <Footer/>
+          <div className = "col-md-2"></div>
         </div>
+          <Footer/>
+      </div>
           
     );
   }
@@ -128,17 +127,6 @@ function getAvatar (object){
   for(var key in object){
     if(object.hasOwnProperty(key)){
       if(object[key] != null) name = object[key].avatarmedium;
-    }
-  }
-  return name;
-}
-
-function getID (object){
-  var name;
-
-  for(var key in object){
-    if(object.hasOwnProperty(key)){
-      if(object[key] != null) name = object[key].account_id;
     }
   }
   return name;

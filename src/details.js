@@ -5,8 +5,6 @@ import Footer from './footer';
 
 import './details.css';
 
-
-
   const Details = (props) => {
 
     //console.log(props);
@@ -27,8 +25,7 @@ import './details.css';
         <div>
             <NavBar/>
             <div className ="animation">Hi sweetie</div>
-            <h1 className="animated infinite bounce">Example</h1>
-
+            <h1 className="animated infinite bounce">Tap the box!!</h1>
         </div>
     )
   }
