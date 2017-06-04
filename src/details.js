@@ -1,36 +1,51 @@
-import React from 'react';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import {createLogger} from 'redux-logger';
+import thunk from 'redux-thunk';
+import axios from 'axios';
 
-import NavBar from './nav-bar';
-import Footer from './footer';
+const initialState = {
+    fetching: false,
+    fetched: false,
+    users: [],
+    error: null, 
+}
 
-import './details.css';
+const reducer = (state={}, action) => {
+    switch(action.type){
+        case "FETCH_USERS_START": {
+            return {...state, fetching: true}
+            break;
+        }
+        case "FETCH_USERS_ERROR": {
+            return {...state, fetching: false, error: action.payload}
+            break;
+        }
+        case "RECEIVE_USERS": {
+            return {...state, fetching: false, fetched: true, users: action.payload}
+            break;
+        }
+    }
+    return state;
+};
 
-  const Details = (props) => {
+const middleware = applyMiddleware(thunk,createLogger());
+const store = createStore(reducer, middleware);
 
-    //console.log(props);
+store.subscribe(() => {
+    console.log("store changed", store.getState());
+})
 
-    var url = 'https://api.opendota.com/api/players/67762065/matches?limit=10';
-    fetch(url)
-        .then((response)=> {
-            if(response.status >= 400){
-                throw new Error  ("Bad response from server");
-            }
-            return response.json();
+store.dispatch((dispatch) => {
+    dispatch({type: "FETCH_USERS_START"})
+    axios.get("http://rest.learncode.academy/api/wstern/users")
+        .then((respond) => {
+            dispatch({type: "RECEIVE_USERS", payload: respond.data})
         })
-        .then((data) =>{
-            //console.log(data);
-        });
-
-    return (
-        <div>
-            <NavBar/>
-            <div className ="animation">Hi sweetie</div>
-            <h1 className="animated infinite bounce">Tap the box!!</h1>
-        </div>
-    )
-  }
+        .catch((err)=>{
+            dispatch({type: "FETCH_USERS_ERROR", payload: err})
+        })
+})
 
 
 // ========================================
 
-export default Details 
